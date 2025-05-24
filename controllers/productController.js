@@ -72,8 +72,11 @@ exports.addProduct = async (req, res) => {
     const uploadedImage = await uploadBufferToCloudinary(imageFile.buffer, 'products/images');
 
     // Upload model (glb) to Cloudinary with resource_type 'auto'
+    let uploadedModel='';
     if (modelFile) {
-    const uploadedModel = await uploadBufferToCloudinary(modelFile.buffer, 'products/models', 'auto');
+     uploadedModel = await uploadBufferToCloudinary(modelFile.buffer, 'products/models', 'auto');
+    } else {
+      uploadedModel='';
     }
 
     // Save product in DB with Cloudinary URLs
