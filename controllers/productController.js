@@ -64,7 +64,7 @@ exports.addProduct = async (req, res) => {
     const imageFile = req.files['image']?.[0];
     const modelFile = req.files['model']?.[0];
 
-    if (!imageFile || !modelFile) {
+    if (!imageFile) {
       return res.status(400).json({ message: 'Image and GLB model file are required' });
     }
 
